@@ -21,13 +21,13 @@ export default function App() {
                 }
 
             </main>
-            {/*<Footer container={true}>
+            <Footer container={true}>
                 <Footer.Copyright
                     href="https://parseiro.github.io"
                     by="Leonardo Vilela Pinheiro"
                     year={2023}
                 />
-            </Footer>*/}
+            </Footer>
         </>
     )
 }
