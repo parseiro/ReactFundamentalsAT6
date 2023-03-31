@@ -7,22 +7,10 @@ import Cities from './Cities'
 export default function App() {
     const [selectedState, setSelectedState] = useState<Estado>({id: "", nome: "", sigla: ""})
 
-    // const cities = useAsync(() => fetchCitiesByStateId(selectedState.id), false)
-
-    // Cities data from IBGE
-    /*let cities: FetchCities = EMPTY_CITIES
-    useEffect(() => {
-        if (selectedState && selectedState.id) {
-            cities = useAsync(() => fetchCitiesByStateId(selectedState.id), true)
-        } else {
-            cities = EMPTY_CITIES
-        }
-    }, [selectedState.id])*/
-
     return (
         <>
             <main className="flex flex-col items-center gap-4 container">
-                <h1 className="text-center text-4xl">Brazilian States and Cities</h1>
+                <h1 className="text-center text-4xl">Infinite Scroll</h1>
                 <States
                     selectedState={selectedState}
                     setSelectedState={setSelectedState}
@@ -33,13 +21,13 @@ export default function App() {
                 }
 
             </main>
-            <Footer container={true}>
+            {/*<Footer container={true}>
                 <Footer.Copyright
                     href="https://parseiro.github.io"
                     by="Leonardo Vilela Pinheiro"
                     year={2023}
                 />
-            </Footer>;
+            </Footer>*/}
         </>
     )
 }

@@ -11,21 +11,13 @@ export interface Estado {
 
 export async function fetchStates(): Promise<Estado[]> {
     const newStateList: Estado[] = []
-    const response = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+    const response = await fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
     const json: Estado[] = await response.json()
-    json.sort((a, b) => a.sigla > b.sigla ? 1 : -1)
     json.forEach(({id, sigla, nome}) => {
         newStateList.push({id, sigla, nome})
     })
     return newStateList
 }
-
-/*interface Fetch {
-    execute: () => Promise<void>
-    status: "idle" | "success" | "error" | "pending",
-    value: Estado[] | null,
-    error: string | null,
-}*/
 
 interface Props {
     selectedState: Estado,
@@ -33,13 +25,13 @@ interface Props {
 }
 
 function States(props: Props) {
-    const { execute, status, value: states, error} = useAsync<Estado[]>(fetchStates, true)
+    const { status, value: states, error} = useAsync<Estado[]>(fetchStates, true)
 
     const {selectedState, setSelectedState} = props;
 
     return <>
         {status === 'pending' && <p>Loading...</p>}
-        {status === 'error' && <p>Error fetching states</p>}
+        {status === 'error' && <p>Error fetching states: {JSON.stringify(error)}</p>}
         {status === 'success' && (<>
             <Label
                 htmlFor="estados"
@@ -66,6 +58,7 @@ function States(props: Props) {
                 ))}
             </Select>
         </>)}
+
     </>
 }
 

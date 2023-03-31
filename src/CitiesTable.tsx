@@ -15,15 +15,15 @@ function CitiesTable(props: Props) {
 
     return (<>
         <Table striped hoverable>
-            <Table.Head>
-                <Table.HeadCell className="text-center">
-                    ID
-                </Table.HeadCell>
-                <Table.HeadCell className="min-w-[300px]">
-                    Name
-                </Table.HeadCell>
-            </Table.Head>
-            <Table.Body className="divide-y">
+                <Table.Head>
+                    <Table.HeadCell className="text-center">
+                        ID
+                    </Table.HeadCell>
+                    <Table.HeadCell className="min-w-[300px]">
+                        Name
+                    </Table.HeadCell>
+                </Table.Head>
+                <Table.Body className="divide-y">
                 {cities?.filter((_, index) => index >= startIndex && index < endIndex)
                     .map(({id, nome}) => (
                     <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800" key={id}>
